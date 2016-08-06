@@ -1779,7 +1779,9 @@ static atomic_unchecked_t conntrack_cache_id = ATOMIC_INIT(0);
 
 int nf_conntrack_init_net(struct net *net)
 {
+#ifndef CONFIG_GRKERNSEC_HIDESYM
 	static atomic64_t unique_id;
+#endif
 	int ret = -ENOMEM;
 	int cpu;
 
